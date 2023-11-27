@@ -322,6 +322,8 @@ body {
     width: 100%;
     display: none;
     padding: 12px;
+    z-index: 20;
+
 }
 
 .cart-menu-container {
