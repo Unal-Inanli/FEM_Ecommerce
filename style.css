@@ -534,6 +534,7 @@ body {
 
     .mobile-menu-container {
         position: fixed;
+        z-index: 30;
         top: 0;
         left: 0;
         height: 100%;
@@ -581,5 +582,7 @@ body {
     .mobile-menu li a {
         text-decoration: none;
         font-weight: bold;
+        color: black;
+
     }
 }
