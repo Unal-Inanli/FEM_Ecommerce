@@ -17,7 +17,7 @@ class CartManager {
 }
 
 const cartManagerInstance = new CartManager()
-
+let currentImageIndex = 0;
 
 const mobileMenuButton = document.querySelector("#js-menu-button")
 const mobileMenuContainer = document.querySelector("#js-mobile-menu-container")
@@ -62,13 +62,59 @@ quantityDecrementButton.addEventListener("click", () => {
 
 const thumbnails = document.querySelectorAll('.thumbnail')
 const currentImage = document.querySelector("#js-current-image")
+const imageNextButton = document.querySelector("#js-image-next")
+const imagePreviousButton = document.querySelector("#js-image-previous")
 
-thumbnails.forEach(element => {
+imageNextButton.addEventListener("click", () => {
+    if (currentImageIndex + 1 > thumbnails.length - 0) {
+        return
+    }
+    currentImageIndex += 1
+    thumbnails.forEach((element, index) => {
+        const imageLink = element.getAttribute("data-image")
+        if (imageLink && currentImageIndex === index) {
+            currentImage.setAttribute("src", imageLink)
+
+
+            thumbnails.forEach(element => {
+                element.removeAttribute("data-selected")
+            })
+            element.setAttribute("data-selected", "")
+            return
+        }
+    })
+})
+
+
+imagePreviousButton.addEventListener("click", () => {
+    if (currentImageIndex - 1 < 0) {
+        return
+    }
+    currentImageIndex -= 1
+    thumbnails.forEach((element, index) => {
+        const imageLink = element.getAttribute("data-image")
+        if (imageLink && currentImageIndex === index) {
+            currentImage.setAttribute("src", imageLink)
+
+            thumbnails.forEach(element => {
+                element.removeAttribute("data-selected")
+            })
+            element.setAttribute("data-selected", "")
+            return
+        }
+
+
+    })
+
+})
+
+thumbnails.forEach((element, index) => {
     element.addEventListener('click', (e) => {
         const imageLink = element.getAttribute("data-image")
 
         if (imageLink) {
             currentImage.setAttribute("src", imageLink)
+            currentImageIndex = index
         }
 
         thumbnails.forEach(element => {

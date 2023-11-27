@@ -189,6 +189,36 @@ body {
     border-radius: 20px;
     overflow: hidden;
     height: 480px;
+    position: relative;
+}
+
+.image-button {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 50%;
+    padding: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.image-button img {
+    width: 16px;
+    height: 16px;
+}
+
+
+.image-button:nth-of-type(2) {
+    right: 20px;
+}
+
+.image-button:nth-of-type(1) {
+    left: 20px;
 }
 
 .current-image img {
@@ -440,6 +470,10 @@ body {
     .current-image {
         border-radius: 0;
         height: 300px;
+    }
+
+    .image-button {
+        display: flex;
     }
 
     body {
